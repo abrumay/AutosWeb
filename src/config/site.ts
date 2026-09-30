@@ -4,6 +4,7 @@
  */
 export const sitio = {
   nombre: "Edison 1632",
+  rubro: "Automotores",
   descripcion:
     "Concesionaria de autos usados seleccionados. Atención personalizada, papeles al día y la tranquilidad de comprar con confianza.",
   direccion: "Edison 1632",

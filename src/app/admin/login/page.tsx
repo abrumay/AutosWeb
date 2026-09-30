@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { sitio } from "@/config/site";
+import { Logo } from "@/components/sitio/logo";
 import { FormularioLogin } from "@/components/admin/formulario-login";
 
 export default function LoginPage() {
   return (
     <main className="flex min-h-dvh flex-col items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        <p className="text-center font-serif text-4xl font-bold text-tinta">{sitio.nombre}</p>
+        <Logo priority className="mx-auto h-28" />
         <div className="mt-8 rounded-2xl border border-borde bg-white p-6 shadow-sm sm:p-8">
           <h1 className="text-3xl font-bold text-tinta">Ingresar</h1>
           <p className="mt-2 text-lg text-texto-suave">Panel de administración de autos.</p>

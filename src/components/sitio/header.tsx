@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/icons";
+import { Logo } from "./logo";
 import { mapaUrl, sitio } from "@/config/site";
 import { whatsappUrl } from "@/lib/utils";
 
@@ -9,9 +10,8 @@ export function Header() {
   return (
     <header className="border-b border-borde bg-white">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-4 px-4 py-4 sm:px-6">
-        <Link href="/" className="group flex flex-col leading-tight">
-          <span className="font-serif text-3xl font-bold tracking-tight text-tinta sm:text-4xl">{sitio.nombre}</span>
-          <span className="text-base text-texto-suave">Concesionaria de autos</span>
+        <Link href="/" aria-label={`${sitio.nombre} ${sitio.rubro} - Inicio`}>
+          <Logo priority className="h-16 sm:h-20" />
         </Link>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">

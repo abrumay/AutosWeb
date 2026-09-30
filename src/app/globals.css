@@ -4,9 +4,11 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
 
-  /* Paleta sobria: tinta azul profunda, marfil y un acento dorado. */
-  --color-tinta: #14213d;
-  --color-tinta-suave: #2b3a5c;
+  /* Paleta tomada del logo: azul índigo profundo, marfil y un acento dorado. */
+  --color-tinta: #1b1a5e;
+  --color-tinta-suave: #2d2b9a;
+  --color-noche: #05051a;
+  --color-indigo: #3633cc;
   --color-marfil: #faf8f4;
   --color-arena: #f1ede4;
   --color-borde: #d9d3c7;
