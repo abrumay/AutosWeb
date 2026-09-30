@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* Paleta sobria: tinta azul profunda, marfil y un acento dorado. */
+  --color-tinta: #14213d;
+  --color-tinta-suave: #2b3a5c;
+  --color-marfil: #faf8f4;
+  --color-arena: #f1ede4;
+  --color-borde: #d9d3c7;
+  --color-texto: #1c1c1c;
+  --color-texto-suave: #4a4a4a;
+  --color-dorado: #9a7b3f;
+  --color-dorado-claro: #f3ead7;
+  --color-whatsapp: #127a3f;
+  --color-whatsapp-oscuro: #0d5e30;
+  --color-exito: #166534;
+  --color-exito-fondo: #e7f5ec;
+  --color-error: #a61b1b;
+  --color-error-fondo: #fdecec;
+  --color-aviso: #8a5a00;
+  --color-aviso-fondo: #fff4d6;
+}
+
+@layer base {
+  html {
+    /* Base de 18px: todo el sitio escala a partir de acá. */
+    font-size: 112.5%;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-marfil text-texto font-sans antialiased;
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-dorado);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
