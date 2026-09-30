@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import silueta from "../../../public/auto-silueta.png";
 import { Search, ShieldCheck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FotoAuto } from "./foto-auto";
@@ -7,17 +9,23 @@ import type { Vehiculo } from "@/lib/types";
 
 export function Hero({ busqueda, destacados }: { busqueda?: string; destacados: Vehiculo[] }) {
   return (
-    <section className="bg-gradient-to-b from-white to-marfil">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+    <section className="relative overflow-hidden bg-gradient-to-br from-noche via-tinta to-indigo text-white">
+      <Image
+        src={silueta}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute -right-16 top-10 hidden w-[36rem] opacity-15 lg:block xl:right-0"
+      />
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full bg-dorado-claro px-4 py-1.5 text-base font-semibold text-[#6b5220]">
             <ShieldCheck className="size-5" aria-hidden />
             Autos revisados y con papeles al día
           </p>
-          <h1 className="mt-5 font-serif text-4xl font-bold leading-tight text-tinta sm:text-5xl">
+          <h1 className="mt-5 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl">
             Su próximo auto, con la confianza de siempre.
           </h1>
-          <p className="mt-4 text-xl text-texto-suave">
+          <p className="mt-4 text-xl text-white/85">
             Lo atendemos personalmente, sin apuros y con toda la información clara. Busque el modelo que le interesa
             o consúltenos directamente.
           </p>
@@ -37,10 +45,10 @@ export function Hero({ busqueda, destacados }: { busqueda?: string; destacados: 
                 type="search"
                 defaultValue={busqueda}
                 placeholder="Ej: Toyota Corolla"
-                className="h-16 w-full rounded-xl border-2 border-borde bg-white pl-13 pr-4 text-xl focus:border-tinta focus:outline-none"
+                className="h-16 w-full rounded-xl border-2 border-white bg-white pl-13 pr-4 text-xl text-texto focus:border-dorado focus:outline-none"
               />
             </div>
-            <Button type="submit" size="lg" className="h-16">
+            <Button type="submit" size="lg" variant="secondary" className="h-16 border-white">
               <Search aria-hidden /> Buscar
             </Button>
           </form>
@@ -49,11 +57,11 @@ export function Hero({ busqueda, destacados }: { busqueda?: string; destacados: 
         {destacados.length > 0 && (
           <div className="mt-12">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="flex items-center gap-2 text-2xl font-bold text-tinta">
-                <Star className="size-6 fill-dorado text-dorado" aria-hidden />
+              <h2 className="flex items-center gap-2 text-2xl font-bold text-white">
+                <Star className="size-6 fill-[#e6d3a8] text-[#e6d3a8]" aria-hidden />
                 Destacados de la semana
               </h2>
-              <Link href="/?destacados=1#autos" className="text-lg font-semibold text-tinta underline underline-offset-4">
+              <Link href="/?destacados=1#autos" className="text-lg font-semibold text-white underline underline-offset-4">
                 Ver todos los destacados
               </Link>
             </div>

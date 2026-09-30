@@ -1,6 +1,6 @@
 # Edison 1632 — Catálogo de autos + Panel de administración
 
-Sitio web de la concesionaria **Edison 1632**: catálogo público de autos y panel privado (ABM) para cargarlos.
+Sitio web de **Edison 1632 Automotores** (Mar del Plata): catálogo público de autos y panel privado (ABM) para cargarlos.
 Pensado para gente mayor: letra grande (base de 18px), alto contraste, botones amplios y formularios simples.
 
 **Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Radix UI · lucide-react · Supabase (DB, Auth, Storage) · React Hook Form + Zod.
@@ -32,7 +32,7 @@ Pensado para gente mayor: letra grande (base de 18px), alto contraste, botones a
    cp .env.example .env.local
    # completar NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY (Project Settings → API)
    ```
-5. **Datos de la concesionaria:** editar `src/config/site.ts` (dirección, contactos con teléfono y WhatsApp, y horarios). El mapa se genera a partir de la dirección.
+5. **Datos de la agencia:** editar `src/config/site.ts` (dirección, contactos con teléfono y WhatsApp, y horarios). El mapa se genera a partir de la dirección.
 6. **Correr el proyecto:**
    ```bash
    npm install
@@ -76,3 +76,5 @@ supabase/
 - El filtro de precio aplica a los autos publicados en la moneda elegida (USD o ARS).
 - Al quitar fotos de un auto ya guardado, se borran del almacenamiento recién al guardar los cambios; al eliminar un auto se borran también todas sus fotos.
 - Para desplegar en Vercel, cargar las mismas variables de entorno del paso 4.
+
+- El logo está en `public/logo.png` (azul, para fondos claros) y `public/logo-blanco.png` (para fondos oscuros); el ícono de la pestaña en `src/app/icon.png`.

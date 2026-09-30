@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { Clock, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons";
+import { Logo } from "./logo";
 import { direccionCompleta, mapaEmbedUrl, sitio } from "@/config/site";
 import { whatsappUrl } from "@/lib/utils";
 
 export function Footer() {
   return (
-    <footer className="mt-20 bg-tinta text-white">
+    <footer className="mt-20 bg-gradient-to-br from-noche via-tinta to-indigo text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-3">
         <div>
-          <p className="font-serif text-3xl font-bold">{sitio.nombre}</p>
+          <Logo claro className="mb-5 h-24" />
           <p className="mt-3 text-lg text-white/85">{sitio.descripcion}</p>
         </div>
 

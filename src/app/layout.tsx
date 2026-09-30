@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: `${sitio.nombre} | Concesionaria de autos`, template: `%s | ${sitio.nombre}` },
+  title: { default: `${sitio.nombre} ${sitio.rubro} | Mar del Plata`, template: `%s | ${sitio.nombre}` },
   description: sitio.descripcion,
 };
 
 export const viewport: Viewport = {
-  themeColor: "#14213d",
+  themeColor: "#1b1a5e",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
