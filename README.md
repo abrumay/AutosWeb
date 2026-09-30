@@ -32,7 +32,7 @@ Pensado para gente mayor: letra grande (base de 18px), alto contraste, botones a
    cp .env.example .env.local
    # completar NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY (Project Settings → API)
    ```
-5. **Datos de la concesionaria:** editar `src/config/site.ts` (dirección, teléfono, WhatsApp, email y horarios). El mapa se genera a partir de la dirección.
+5. **Datos de la concesionaria:** editar `src/config/site.ts` (dirección, contactos con teléfono y WhatsApp, y horarios). El mapa se genera a partir de la dirección.
 6. **Correr el proyecto:**
    ```bash
    npm install
