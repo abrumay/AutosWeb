@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons";
 import { direccionCompleta, mapaEmbedUrl, sitio } from "@/config/site";
 import { whatsappUrl } from "@/lib/utils";
@@ -21,29 +21,26 @@ export function Footer() {
                 <MapPin className="mt-1 size-6 shrink-0 text-[#e6d3a8]" aria-hidden />
                 {direccionCompleta}
               </li>
-              <li>
-                <a href={`tel:${sitio.telefonoLink}`} className="flex items-center gap-3 hover:underline">
-                  <Phone className="size-6 shrink-0 text-[#e6d3a8]" aria-hidden />
-                  {sitio.telefono}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={whatsappUrl("Hola! Quería hacer una consulta.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 hover:underline"
-                >
-                  <WhatsAppIcon className="size-6 shrink-0 text-[#e6d3a8]" />
-                  Escribinos por WhatsApp
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${sitio.email}`} className="flex items-center gap-3 break-all hover:underline">
-                  <Mail className="size-6 shrink-0 text-[#e6d3a8]" aria-hidden />
-                  {sitio.email}
-                </a>
-              </li>
+              {sitio.contactos.map((c) => (
+                <li key={c.nombre} className="border-t border-white/15 pt-3">
+                  <p className="font-semibold">{c.nombre}</p>
+                  <div className="mt-1 flex flex-wrap gap-x-6 gap-y-2">
+                    <a href={`tel:${c.telefonoLink}`} className="flex items-center gap-3 hover:underline">
+                      <Phone className="size-6 shrink-0 text-[#e6d3a8]" aria-hidden />
+                      {c.telefono}
+                    </a>
+                    <a
+                      href={whatsappUrl("Hola! Quería hacer una consulta.", c.whatsapp)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 hover:underline"
+                    >
+                      <WhatsAppIcon className="size-6 shrink-0 text-[#e6d3a8]" />
+                      WhatsApp
+                    </a>
+                  </div>
+                </li>
+              ))}
             </ul>
           </section>
 

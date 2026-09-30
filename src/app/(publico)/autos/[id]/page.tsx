@@ -43,7 +43,7 @@ export default async function DetalleAutoPage({ params }: Props) {
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 lg:pb-0">
+    <div className="mx-auto max-w-7xl px-4 pb-40 pt-8 sm:px-6 lg:pb-0">
       <Link
         href="/#autos"
         className="inline-flex min-h-12 items-center gap-2 text-lg font-semibold text-tinta hover:underline"
@@ -103,17 +103,29 @@ export default async function DetalleAutoPage({ params }: Props) {
                 Este auto ya fue vendido. Consúltenos por unidades similares.
               </p>
             ) : (
-              <Button asChild variant="whatsapp" size="lg" className="mt-6 hidden w-full lg:flex">
-                <a href={whatsappVehiculoUrl(vehiculo)} target="_blank" rel="noopener noreferrer">
-                  <WhatsAppIcon /> Consultar por WhatsApp
-                </a>
-              </Button>
+              <div className="mt-6 hidden lg:block">
+                <p className="text-lg font-semibold">Consultar por WhatsApp con:</p>
+                <div className="mt-2 grid grid-cols-2 gap-3">
+                  {sitio.contactos.map((c) => (
+                    <Button key={c.nombre} asChild variant="whatsapp" size="lg">
+                      <a href={whatsappVehiculoUrl(vehiculo, c.whatsapp)} target="_blank" rel="noopener noreferrer">
+                        <WhatsAppIcon /> {c.nombre}
+                      </a>
+                    </Button>
+                  ))}
+                </div>
+              </div>
             )}
-            <Button asChild variant="secondary" size="lg" className="mt-3 w-full">
-              <a href={`tel:${sitio.telefonoLink}`}>
-                <Phone aria-hidden /> Llamar por teléfono
-              </a>
-            </Button>
+            <p className="mt-6 text-lg font-semibold">Llamar por teléfono:</p>
+            <div className="mt-2 space-y-3">
+              {sitio.contactos.map((c) => (
+                <Button key={c.nombre} asChild variant="secondary" size="lg" className="w-full whitespace-nowrap px-4 text-base sm:text-lg">
+                  <a href={`tel:${c.telefonoLink}`}>
+                    <Phone aria-hidden /> {c.nombre}: {c.telefono}
+                  </a>
+                </Button>
+              ))}
+            </div>
           </div>
         </aside>
 
@@ -145,11 +157,16 @@ export default async function DetalleAutoPage({ params }: Props) {
 
       {!vendido && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-borde bg-white/95 p-3 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden">
-          <Button asChild variant="whatsapp" size="lg" className="w-full">
-            <a href={whatsappVehiculoUrl(vehiculo)} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon /> Consultar por WhatsApp
-            </a>
-          </Button>
+          <p className="mb-2 text-center text-base font-semibold">Consultar por WhatsApp con:</p>
+          <div className="grid grid-cols-2 gap-3">
+            {sitio.contactos.map((c) => (
+              <Button key={c.nombre} asChild variant="whatsapp" size="lg" className="px-3">
+                <a href={whatsappVehiculoUrl(vehiculo, c.whatsapp)} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon /> {c.nombre}
+                </a>
+              </Button>
+            ))}
+          </div>
         </div>
       )}
     </div>

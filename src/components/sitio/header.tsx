@@ -22,15 +22,25 @@ export function Header() {
             className="hidden items-center gap-2 text-lg text-texto hover:text-tinta md:flex"
           >
             <MapPin className="size-6 text-dorado" aria-hidden />
-            <span>{sitio.direccion}</span>
+            <span>
+              {sitio.direccion}, {sitio.localidad.split(",")[0]}
+            </span>
           </a>
-          <a
-            href={`tel:${sitio.telefonoLink}`}
-            className="flex items-center gap-2 text-lg font-semibold text-tinta hover:underline"
-          >
-            <Phone className="size-6 text-dorado" aria-hidden />
-            <span>{sitio.telefono}</span>
-          </a>
+          <ul className="flex flex-wrap gap-x-5 gap-y-1" aria-label="Teléfonos">
+            {sitio.contactos.map((c) => (
+              <li key={c.nombre}>
+                <a
+                  href={`tel:${c.telefonoLink}`}
+                  className="flex items-center gap-2 text-lg text-tinta hover:underline"
+                >
+                  <Phone className="size-5 text-dorado" aria-hidden />
+                  <span>
+                    <span className="font-semibold">{c.telefono}</span> ({c.nombre})
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
           <Button asChild variant="whatsapp" size="md">
             <a href={whatsappUrl("Hola! Quería hacer una consulta.")} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon />
