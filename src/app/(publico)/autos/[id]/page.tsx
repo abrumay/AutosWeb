@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Cog, Fuel, Gauge, Phone, Star, Tag } from "lucide-react";
+import { Compartir } from "@/components/catalogo/compartir";
 import { Galeria } from "@/components/catalogo/galeria";
 import { Badge, varianteEstado } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/icons";
 import { sitio } from "@/config/site";
 import { obtenerVehiculo } from "@/lib/vehiculos";
+import { urlFotoParaCompartir } from "@/lib/url";
 import { formatearKm, formatearPrecio, tituloVehiculo, whatsappVehiculoUrl } from "@/lib/utils";
 
 type Props = { params: Promise<{ id: string }> };
@@ -18,10 +20,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const vehiculo = await obtenerVehiculo((await params).id);
   if (!vehiculo) return { title: "Auto no encontrado" };
   const titulo = `${tituloVehiculo(vehiculo)} ${vehiculo.anio}`;
+  const precio = formatearPrecio(vehiculo.precio, vehiculo.moneda);
+  const descripcion = [
+    vehiculo.version,
+    formatearKm(vehiculo.kilometraje),
+    vehiculo.combustible,
+    vehiculo.transmision,
+    vehiculo.estado !== "Disponible" ? vehiculo.estado : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const foto = vehiculo.imagenes[0];
   return {
     title: titulo,
-    description: `${titulo} · ${formatearKm(vehiculo.kilometraje)} · ${vehiculo.combustible} · ${vehiculo.transmision}. ${formatearPrecio(vehiculo.precio, vehiculo.moneda)}.`,
-    openGraph: vehiculo.imagenes[0] ? { images: [vehiculo.imagenes[0]] } : undefined,
+    description: `${descripcion}. ${precio}.`,
+    alternates: { canonical: `/autos/${vehiculo.id}` },
+    // Vista previa al compartir: foto del auto, nombre, año y precio.
+    openGraph: {
+      type: "website",
+      locale: "es_AR",
+      siteName: `${sitio.nombre} ${sitio.rubro}`,
+      url: `/autos/${vehiculo.id}`,
+      title: `${titulo} · ${precio}`,
+      description: `${descripcion}. ${sitio.nombre}, ${sitio.localidad.split(",")[0]}.`,
+      images: foto
+        ? [{ url: urlFotoParaCompartir(foto), width: 1200, alt: titulo }]
+        : [{ url: "/og.jpg", width: 1200, height: 630, alt: `${sitio.nombre} ${sitio.rubro}` }],
+    },
+    twitter: { card: "summary_large_image" },
   };
 }
 
@@ -126,6 +152,7 @@ export default async function DetalleAutoPage({ params }: Props) {
                 </Button>
               ))}
             </div>
+            <Compartir titulo={`${titulo} ${vehiculo.anio}`} className="mt-6 w-full" />
           </div>
         </aside>
 
