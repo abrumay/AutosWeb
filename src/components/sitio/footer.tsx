@@ -73,7 +73,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/15">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-5 text-base text-white/70 sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-2 px-4 pb-24 pt-5 text-base text-white/70 sm:px-6">
           <p>
             © {new Date().getFullYear()} {sitio.nombre}. Todos los derechos reservados.
           </p>

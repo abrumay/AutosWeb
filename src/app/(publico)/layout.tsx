@@ -1,5 +1,6 @@
 import { Header } from "@/components/sitio/header";
 import { Footer } from "@/components/sitio/footer";
+import { WhatsAppFlotante } from "@/components/sitio/whatsapp-flotante";
 
 export default function PublicoLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export default function PublicoLayout({ children }: { children: React.ReactNode 
       <Header />
       <main id="contenido">{children}</main>
       <Footer />
+      <WhatsAppFlotante />
     </>
   );
 }

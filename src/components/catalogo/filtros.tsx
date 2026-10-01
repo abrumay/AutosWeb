@@ -16,7 +16,17 @@ interface FiltrosProps {
  * los filtros quedan en la URL (se pueden compartir o volver atrás).
  */
 export function Filtros({ filtros, marcas, anios }: FiltrosProps) {
-  const hayFiltros = Object.values(filtros).some((v) => v !== undefined && v !== false);
+  // La moneda sola no es un filtro: solo cuenta junto con un precio.
+  const hayFiltros = Boolean(
+    filtros.q ||
+      filtros.marca ||
+      filtros.anioDesde ||
+      filtros.transmision ||
+      filtros.combustible ||
+      filtros.precioMin != null ||
+      filtros.precioMax != null ||
+      filtros.destacados,
+  );
 
   return (
     <form action="/#autos" method="get" className="rounded-2xl border border-borde bg-white p-5 sm:p-6">

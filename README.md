@@ -78,3 +78,4 @@ supabase/
 - Para desplegar en Vercel, cargar las mismas variables de entorno del paso 4.
 
 - El logo está en `public/logo.png` (azul, para fondos claros) y `public/logo-blanco.png` (para fondos oscuros); el ícono de la pestaña en `src/app/icon.png`.
+- Al compartir el sitio o un auto (WhatsApp, Facebook) se muestra una vista previa con la foto del auto, el nombre, el año y el precio; la portada usa `public/og.jpg`. En Vercel la dirección del sitio se detecta sola; con dominio propio, cargar `NEXT_PUBLIC_SITE_URL`.
